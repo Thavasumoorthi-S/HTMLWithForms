@@ -1,0 +1,44 @@
+.container{
+    margin-top:10%;
+    margin-left:40%;
+    margin-right:30%;
+    background-color: coral;
+}
+*{
+    box-sizing: border-box;
+}
+label{
+    display: inline-block;
+    width:150px;
+}
+button{
+    margin-left:40%;
+    background-color: blue;
+    color:white;
+    margin-left:20%;
+    padding: 10px;
+}
+form{
+    padding-left:10%;
+    padding-top:15px;
+    padding-bottom:15px;
+}
+h1{
+    text-align: center;
+    color:blue;
+}
+p{
+    background-color:crimson;
+    color:white;
+}
+.resulting{
+    margin-left:40%;
+    margin-right:30%;
+    background-color: crimson;    
+    text-align: center;  
+}
+body{
+    background-image: url("C:/Users/Tringapps-User8/Downloads/register.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
