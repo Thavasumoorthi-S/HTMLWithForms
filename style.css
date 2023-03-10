@@ -1,68 +1,39 @@
-.header {
-  height: 20px;
-  width: 80%;
-  text-align: center;
-}
-.textField {
-  border: 2px solid black;
-  margin: 5px;
-  height: 25px;
-  border-radius: 25px;
-  width: 80%;
-}
-.textField:hover {
-  background-color: palegoldenrod;
-}
-.add {
-  background-color: #33ff33;
-  width: 80px;
-  height: 30px;
-  margin: 10px;
-  cursor: pointer;
-  color:white;
-}
-.add:hover,
-.reset:hover {
-  background-color: white;
-}
-.reset {
-  background-color: red;
-  width: 80px;
-  height: 30px;
-  margin: 10px;
-  cursor: pointer;
-  color:white;
-}
-table,
-tbody {
-  padding-left: 10%;
-  border: 2px solid black;
-  text-align: center;
-  margin: 2px;
-}
-.myTable .th {
-  background-color: lightgreen;
-}
-.edit {
-  background-color: #33ff33;
-  margin: 2px;
-}
-.del {
-  background-color: red;
-  margin: 2px;
-}
-form {
-  width: 400px;
-  margin: 0 auto;
-  background-color: white;
-  padding: 20px;
-  text-align: center;
-  border: 3px solid blue;
-
-}
-label {
-  display: block;
-  margin-bottom: 10px;
-  font-weight: bold;
-  color: #333;
-}
+.body{
+        background-image: url("C:/Users/Tringapps-User8/Downloads/register.jpg");
+        background-repeat: no-repeat;
+         background-size: cover;
+        }
+        form{
+            padding:5%;
+        }
+        .container
+        {
+            display:flex;
+            flex-direction: column;
+            margin-top:4%;
+        }
+        .container .outer{
+         
+            height:100px;
+            background-color:black;
+            color:white;
+            margin-left:14%;
+            margin-right: 10%;
+            /*padding:20px;*/
+        }
+        .container #employee{
+            background-color:greenyellow;
+            margin-left:14%;
+            margin-right: 14%;
+            width:76%;
+        }
+        button{
+            background-color: blue;
+            color:white;
+        }
+        tbody tr {
+            padding:14%;
+        }
+        tbody{
+            text-align: center;
+        }
