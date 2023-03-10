@@ -24,6 +24,10 @@ function numbercheck()
 function dobcheck()
 {
     let dob=document.getElementById("dob").value;
+     if(dob.match(/[a-zA-Z-,-.@$]/))
+    {
+        alert("Please only Enter the numbers like 0-9 and use / for separate dd/mm/yyyy");
+    }
     let result=dob.split('/')
     if((Number(result[0])>31 )||( Number(result[1])>12) || (result[2].length>4))
     {
@@ -42,12 +46,19 @@ function citycheck()
 
 
 function onFormSubmit() {
-        const data = read();
+     if(document.getElementById("fullName").value==""||document.getElementById("empCode").value==""||document.getElementById("dob").value==""||document.getElementById("city").value=="")
+    {
+        alert("Please fill the all the input fields")
+    }
+    else
+    {
+        var data = read();
         if (id == null)
             insert(data);
         else
             update(data)
         resetForm();
+    }
 }
 function read() {
     const data = {};
