@@ -1,70 +1,110 @@
-function resultsubmit()
-{
-
+let details = [];
+let count= -1;
+var valid = true;
+let id=0;
+document.querySelector(".add").addEventListener("click", function (event) {
+  if (
+    count=== -1 &&
+    valid &&
+    document.querySelector(".name").value !== "" &&
+    document.querySelector(".mobileno").value !== "" &&
+    document.querySelector(".address").value !== "" &&
+    document.querySelector(".email").value !== "" &&
+    document.querySelector(".dob").value !== ""
+  ) {
+    let data = {
+      Id: (id += 1),
+      name: document.querySelector(".name").value,
+      mobileno: document.querySelector(".mobileno").value,
+      address: document.querySelector(".address").value,
+      date: document.querySelector(".dob").value,
+      email: document.querySelector(".email").value,
+    };
     event.preventDefault();
-    let count=1;
-    var name=document.getElementById("Name").value;
-    var age=document.getElementById("Age").value;
-    var number=document.getElementById("Number").value;
-    var dob=document.getElementById("Dob").value;
+    details.push(data);
+    console.log(details);
+    clear();
+    Display();
+  } 
+  else if (count!== -1) {
+    details[flip].name = document.querySelector(".name").value;
+    details[flip].mobileno = document.querySelector(".mobileno").value;
+    details[flip].address = document.querySelector(".address").value;
+    details[flip].email = document.querySelector(".email").value;
+    details[flip].date = document.querySelector(".dob").value;
+    console.log(details);
+    Display();
+    clear();
+    count= -1;
+    event.preventDefault();
+  } 
+  else {
+    alert("Textfields not correct check...");
+    event.preventDefault();
+  }
+  console.log(details);
+});
+let Display = () => {
+  var result= "";
+  for (let i = 0; i < details.length; i++) {
+    result+= "<tr>";
+    result+= "<td>" + details[i].name + "</td>";
+    result+= "<td>" + details[i].mobileno + "</td>";
+    result+= "<td>" + details[i].email + "</td>";
+    result+= "<td>" + details[i].date + "</td>";
+    result+= "<td>" + details[i].address + "</td>";
+    result+=
+      '<td><button class="edit" onclick="Edit(' +
+      i +
+      ')">EDIT</button><button class="del" onclick="Delete(' +
+      i +
+      ')">DELETE</button></td>';
+    result+= "</tr>";
+  }
+  document.getElementById("tbody").innerHTML = result;
+};
+let Edit = (edittext) => {
 
-    var result=dob.split("/");
-    console.log(result)
+  document.getElementById("name").value = details[edittext].name;
+  document.getElementById("mobileno").value = details[edittext].mobileno;
+  document.getElementById("address").value = details[edittext].address;
+  document.getElementById("date").value = details[edittext].date;
+  document.getElementById("email").value = details[edittext].email;
+  count= edittext;
+};
+let Delete = (item) => {
 
-    if(name==''||age==''||number==''||dob=='')
-    {
-        alert("please Enter all the details")
+  details.splice(item, 1);
+  Display();
+};
+let clear = () => {
+  document.getElementsByTagName("input")[0].style.border = "2px solid black";
+  document.getElementsByTagName("input")[1].style.border = "2px solid black";
+  document.getElementsByTagName("input")[2].style.border = "2px solid black";
+  document.getElementsByTagName("input")[3].style.border = "2px solid black";
+  document.getElementsByTagName("input")[4].style.border = "2px solid black";
+  document.getElementById("form").reset();
+};
+const check = (content) => {
+
+  if (content.id == "name" && content.value.match(/^[a-zA-Z]+$/)) {
+    document.getElementById("name").innerHTML="Correct";
+  } else if (content.id == "mobileno") {
+    if (content.value.length === 10) {
+      document.getElementById("num").innerHTML="Correct";
+    } else {
+      alert("please enter only 10 digits");
     }
-    else{
-        if(name.match(/[0-9-,-.-@]/))
-        {
-            count=0;
-            document.getElementById("name").innerHTML="Please only enter the letter ignore numbers";
-        }
-        if(age.match(/[A-Za-z]/))
-        {
-            count=0;
-            document.getElementById("age").innerHTML="Please only enter the numbers";
+  } else if (content.id == "date" && content.value !== "") {
+    document.getElementById("dob").innerHTML="Correct";
+  } else if (content.id == "email" && content.value !== "") {
+    document.getElementById("mail").innerHTML="Correct";
+  } else if (content.id == "address" && content.value !== "") {
 
-        }
-        
-        if(number.match(/[A-Za-z]/))
-        {
-            count=0;
-            document.getElementById("number").innerHTML="Please only enter the numbers";
-           
-        }
-        if(number.length!=10)
-        {
-                count=0;
-                document.getElementById("number").innerHTML="you must enter 10 digits numbers";
+    document.getElementById("address").innerHTML="Correct";
 
-         }
-
-        if((Number(result[0])>31 )||( Number(result[1])>12) || (result[2].length>4))
-        {
-            count=0;
-            document.getElementById("dob").innerHTML="Please enter the date and month and year like dd/mm/yyyy";
-        }
-        else if(count==1){
-            document.getElementById("name").innerHTML="";
-            document.getElementById("age").innerHTML="";
-            
-            document.getElementById("number").innerHTML="";
-            document.getElementById("number").innerHTML="";
-            
-            document.getElementById("dob").innerHTML="";
-
-
-            document.getElementById("na").innerHTML="Your name is "+name;
-            document.getElementById("ag").innerHTML="Your age is "+age
-            document.getElementById("num").innerHTML="your mobile number is "+number;
-            document.getElementById("do").innerHTML="your Date-of-Birth is "+dob;
-        }
-        
-    }
-}
-function reseting()
-{
-    document.getElementById("form").reset();
-}
+  } else {
+    valid = false;
+    alert("Please enter the correct input to the fields");
+  }
+};
