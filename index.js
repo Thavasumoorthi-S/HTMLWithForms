@@ -1,4 +1,4 @@
-var id = null;
+let id = null;
 function namecheck()
 {
     console.log("pressing ")
@@ -42,7 +42,7 @@ function citycheck()
 
 
 function onFormSubmit() {
-        var data = read();
+        const data = read();
         if (id == null)
             insert(data);
         else
@@ -50,7 +50,7 @@ function onFormSubmit() {
         resetForm();
 }
 function read() {
-    var data = {};
+    const data = {};
     data["fullName"] = document.getElementById("fullName").value;
     data["empCode"] = document.getElementById("empCode").value;
     data["dob"] = document.getElementById("dob").value;
@@ -58,7 +58,7 @@ function read() {
     return data;
 }
 function insert(data) {
-    var table = document.getElementById("employee").getElementsByTagName('tbody')[0];
+    let table = document.getElementById("employee").getElementsByTagName('tbody')[0];
     var newRow = table.insertRow(table.length);
     cell1 = newRow.insertCell(0);
     cell1.innerHTML = data.fullName;
@@ -95,6 +95,6 @@ function update(data) {
 }
 
 function onDelete(td) {
-        row = td.parentElement.parentElement;
+        let row = td.parentElement.parentElement;
         document.getElementById("employee").deleteRow(row.rowIndex);
 }
