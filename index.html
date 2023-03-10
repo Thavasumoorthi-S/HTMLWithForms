@@ -13,8 +13,9 @@
 <body>
     <div class="container">
     <table class="outer">
+        <caption>FORM</caption>
         <tr>
-            <td>
+            <th>
                 <form onsubmit="event.preventDefault();onFormSubmit()">
                         <label>NAME:</label>
                         <input type="text" id="fullName" onkeyup="namecheck()">
@@ -26,10 +27,11 @@
                         <input type="text" id="city" onkeyup="citycheck()" >
                         <button type="submit">SUBMIT</button>
                 </form>
-            </td>
+            </th>
         </tr>
     </table>
     <table  id="employee">
+        <caption>CRUD OPERRATION RESULT</caption>
         <thead>
             <tr>
                 <th>NAME</th>
