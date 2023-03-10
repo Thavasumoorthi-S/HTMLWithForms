@@ -1,6 +1,6 @@
 let details = [];
 let count= -1;
-var valid = true;
+let valid = true;
 let id=0;
 document.querySelector(".add").addEventListener("click", function (event) {
   if (
@@ -13,7 +13,7 @@ document.querySelector(".add").addEventListener("click", function (event) {
     document.querySelector(".dob").value !== ""
   ) {
     let data = {
-      Id: (id += 1),
+      Id: (id =id+ 1),
       name: document.querySelector(".name").value,
       mobileno: document.querySelector(".mobileno").value,
       address: document.querySelector(".address").value,
@@ -45,7 +45,7 @@ document.querySelector(".add").addEventListener("click", function (event) {
   console.log(details);
 });
 let Display = () => {
-  var result= "";
+  let result= "";
   for (let i = 0; i < details.length; i++) {
     result+= "<tr>";
     result+= "<td>" + details[i].name + "</td>";
