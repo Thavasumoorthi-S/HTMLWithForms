@@ -1,44 +1,68 @@
-.container{
-    margin-top:10%;
-    margin-left:40%;
-    margin-right:30%;
-    background-color: coral;
+.header {
+  height: 20px;
+  width: 80%;
+  text-align: center;
 }
-*{
-    box-sizing: border-box;
+.textField {
+  border: 2px solid black;
+  margin: 5px;
+  height: 25px;
+  border-radius: 25px;
+  width: 80%;
 }
-label{
-    display: inline-block;
-    width:150px;
+.textField:hover {
+  background-color: palegoldenrod;
 }
-button{
-    margin-left:40%;
-    background-color: blue;
-    color:white;
-    margin-left:20%;
-    padding: 10px;
+.add {
+  background-color: #33ff33;
+  width: 80px;
+  height: 30px;
+  margin: 10px;
+  cursor: pointer;
+  color:white;
 }
-form{
-    padding-left:10%;
-    padding-top:15px;
-    padding-bottom:15px;
+.add:hover,
+.reset:hover {
+  background-color: white;
 }
-h1{
-    text-align: center;
-    color:blue;
+.reset {
+  background-color: red;
+  width: 80px;
+  height: 30px;
+  margin: 10px;
+  cursor: pointer;
+  color:white;
 }
-p{
-    background-color:crimson;
-    color:white;
+table,
+tbody {
+  padding-left: 10%;
+  border: 2px solid black;
+  text-align: center;
+  margin: 2px;
 }
-.resulting{
-    margin-left:40%;
-    margin-right:30%;
-    background-color: crimson;    
-    text-align: center;  
+.myTable .th {
+  background-color: lightgreen;
 }
-body{
-    background-image: url("C:/Users/Tringapps-User8/Downloads/register.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
+.edit {
+  background-color: #33ff33;
+  margin: 2px;
+}
+.del {
+  background-color: red;
+  margin: 2px;
+}
+form {
+  width: 400px;
+  margin: 0 auto;
+  background-color: white;
+  padding: 20px;
+  text-align: center;
+  border: 3px solid blue;
+
+}
+label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #333;
 }
