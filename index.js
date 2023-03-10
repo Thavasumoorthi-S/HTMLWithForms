@@ -1,111 +1,100 @@
-let details = [];
-let count= -1;
-let valid = true;
-let id=0;
-document.querySelector(".add").addEventListener("click", function (event) {
-  if (
-    count=== -1 &&
-    valid &&
-    document.querySelector(".name").value !== "" &&
-    document.querySelector(".mobileno").value !== "" &&
-    document.querySelector(".address").value !== "" &&
-    document.querySelector(".email").value !== "" &&
-    document.querySelector(".dob").value !== ""
-  ) {
-    let data = {
-      id=id+1;
-      Id:id,
-      name: document.querySelector(".name").value,
-      mobileno: document.querySelector(".mobileno").value,
-      address: document.querySelector(".address").value,
-      date: document.querySelector(".dob").value,
-      email: document.querySelector(".email").value,
-    };
-    event.preventDefault();
-    details.push(data);
-    console.log(details);
-    clear();
-    Display();
-  } 
-  else if (count!== -1) {
-    details[flip].name = document.querySelector(".name").value;
-    details[flip].mobileno = document.querySelector(".mobileno").value;
-    details[flip].address = document.querySelector(".address").value;
-    details[flip].email = document.querySelector(".email").value;
-    details[flip].date = document.querySelector(".dob").value;
-    console.log(details);
-    Display();
-    clear();
-    count= -1;
-    event.preventDefault();
-  } 
-  else {
-    alert("Textfields not correct check...");
-    event.preventDefault();
-  }
-  console.log(details);
-});
-let Display = () => {
-  let result= "";
-  for (let i = 0; i < details.length; i++) {
-    result+= "<tr>";
-    result+= "<td>" + details[i].name + "</td>";
-    result+= "<td>" + details[i].mobileno + "</td>";
-    result+= "<td>" + details[i].email + "</td>";
-    result+= "<td>" + details[i].date + "</td>";
-    result+= "<td>" + details[i].address + "</td>";
-    result+=
-      '<td><button class="edit" onclick="Edit(' +
-      i +
-      ')">EDIT</button><button class="del" onclick="Delete(' +
-      i +
-      ')">DELETE</button></td>';
-    result+= "</tr>";
-  }
-  document.getElementById("tbody").innerHTML = result;
-};
-let Edit = (edittext) => {
-
-  document.getElementById("name").value = details[edittext].name;
-  document.getElementById("mobileno").value = details[edittext].mobileno;
-  document.getElementById("address").value = details[edittext].address;
-  document.getElementById("date").value = details[edittext].date;
-  document.getElementById("email").value = details[edittext].email;
-  count= edittext;
-};
-let Delete = (item) => {
-
-  details.splice(item, 1);
-  Display();
-};
-let clear = () => {
-  document.getElementsByTagName("input")[0].style.border = "2px solid black";
-  document.getElementsByTagName("input")[1].style.border = "2px solid black";
-  document.getElementsByTagName("input")[2].style.border = "2px solid black";
-  document.getElementsByTagName("input")[3].style.border = "2px solid black";
-  document.getElementsByTagName("input")[4].style.border = "2px solid black";
-  document.getElementById("form").reset();
-};
-const check = (content) => {
-
-  if (content.id == "name" && content.value.match(/^[a-zA-Z]+$/)) {
-    document.getElementById("name").innerHTML="Correct";
-  } else if (content.id == "mobileno") {
-    if (content.value.length === 10) {
-      document.getElementById("num").innerHTML="Correct";
-    } else {
-      alert("please enter only 10 digits");
+var id = null;
+function namecheck()
+{
+    console.log("pressing ")
+    let names=document.getElementById("fullName").value
+    if(names.match(/[0-9-,-@-$]/))
+    {
+        alert("please Enter only letter");
     }
-  } else if (content.id == "date" && content.value !== "") {
-    document.getElementById("dob").innerHTML="Correct";
-  } else if (content.id == "email" && content.value !== "") {
-    document.getElementById("mail").innerHTML="Correct";
-  } else if (content.id == "address" && content.value !== "") {
+}
+function numbercheck()
+{
+    console.log("pressing ")
+    let numbers=document.getElementById("empCode").value
+    if(!(numbers.length<=10))
+    {
+        alert("please Enter 10 digits only");
+    }
+    if(numbers.match(/[a-zA-Z-,-.@$]/))
+    {
+        alert("please Enter only number digits");
+    }
+}
+function dobcheck()
+{
+    let dob=document.getElementById("dob").value;
+    let result=dob.split('/')
+    if((Number(result[0])>31 )||( Number(result[1])>12) || (result[2].length>4))
+    {
+        alert("Please enter the date and month and year like dd/mm/yyyy");
+    }
+}
 
-    document.getElementById("address").innerHTML="Correct";
+function citycheck()
+{
+    let city=document.getElementById("city").value
+    if(city.match(/[0-9-,.@$]/))
+    {
+        alert("please only enter letters");
+    }
+}
 
-  } else {
-    valid = false;
-    alert("Please enter the correct input to the fields");
-  }
-};
+
+function onFormSubmit() {
+        var data = read();
+        if (id == null)
+            insert(data);
+        else
+            update(data)
+        resetForm();
+}
+function read() {
+    var data = {};
+    data["fullName"] = document.getElementById("fullName").value;
+    data["empCode"] = document.getElementById("empCode").value;
+    data["dob"] = document.getElementById("dob").value;
+    data["city"] = document.getElementById("city").value;
+    return data;
+}
+function insert(data) {
+    var table = document.getElementById("employee").getElementsByTagName('tbody')[0];
+    var newRow = table.insertRow(table.length);
+    cell1 = newRow.insertCell(0);
+    cell1.innerHTML = data.fullName;
+    cell2 = newRow.insertCell(1);
+    cell2.innerHTML = data.empCode;
+    cell3 = newRow.insertCell(2);
+    cell3.innerHTML = data.dob;
+    cell4 = newRow.insertCell(3);
+    cell4.innerHTML = data.city;
+    cell4 = newRow.insertCell(4);
+    cell4.innerHTML = `<button style="background-color:maroon;color:white" onClick="onEdit(this)">Edit</button>
+                       <button style="background-color:red;color:white" onClick="onDelete(this)">Delete</button>`;
+}
+function resetForm() {
+    document.getElementById("fullName").value = "";
+    document.getElementById("empCode").value = "";
+    document.getElementById("dob").value = "";
+    document.getElementById("city").value = "";
+   id = null;
+}
+
+function onEdit(td) {
+    id= td.parentElement.parentElement;
+    document.getElementById("fullName").value =id.cells[0].innerHTML;
+    document.getElementById("empCode").value =id.cells[1].innerHTML;
+    document.getElementById("dob").value =id.cells[2].innerHTML;
+    document.getElementById("city").value =id.cells[3].innerHTML;
+}
+function update(data) {
+   id.cells[0].innerHTML = data.fullName;
+   id.cells[1].innerHTML = data.empCode;
+   id.cells[2].innerHTML = data.dob;
+   id.cells[3].innerHTML = data.city;
+}
+
+function onDelete(td) {
+        row = td.parentElement.parentElement;
+        document.getElementById("employee").deleteRow(row.rowIndex);
+}
