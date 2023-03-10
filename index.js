@@ -60,16 +60,16 @@ function read() {
 function insert(data) {
     let table = document.getElementById("employee").getElementsByTagName('tbody')[0];
     var newRow = table.insertRow(table.length);
-    cell1 = newRow.insertCell(0);
+    let cell1 = newRow.insertCell(0);
     cell1.innerHTML = data.fullName;
-    cell2 = newRow.insertCell(1);
+    let cell2 = newRow.insertCell(1);
     cell2.innerHTML = data.empCode;
-    cell3 = newRow.insertCell(2);
+     let cell3 = newRow.insertCell(2);
     cell3.innerHTML = data.dob;
-    cell4 = newRow.insertCell(3);
+     let cell4 = newRow.insertCell(3);
     cell4.innerHTML = data.city;
-    cell4 = newRow.insertCell(4);
-    cell4.innerHTML = `<button style="background-color:maroon;color:white" onClick="onEdit(this)">Edit</button>
+    let cell5 = newRow.insertCell(4);
+    cell5.innerHTML = `<button style="background-color:maroon;color:white" onClick="onEdit(this)">Edit</button>
                        <button style="background-color:red;color:white" onClick="onDelete(this)">Delete</button>`;
 }
 function resetForm() {
