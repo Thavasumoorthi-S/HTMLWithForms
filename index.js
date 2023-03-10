@@ -13,7 +13,8 @@ document.querySelector(".add").addEventListener("click", function (event) {
     document.querySelector(".dob").value !== ""
   ) {
     let data = {
-      Id: (id =id+ 1),
+      id=id+1;
+      Id:id,
       name: document.querySelector(".name").value,
       mobileno: document.querySelector(".mobileno").value,
       address: document.querySelector(".address").value,
