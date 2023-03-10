@@ -16,7 +16,7 @@ function numbercheck()
     {
         alert("please Enter 10 digits only");
     }
-    if(numbers.match(/[a-zA-Z-,-.@$]/))
+    if(numbers.match(/[a-zA-Z-,-.\-@$]/))
     {
         alert("please Enter only number digits");
     }
@@ -34,7 +34,7 @@ function dobcheck()
 function citycheck()
 {
     let city=document.getElementById("city").value
-    if(city.match(/[0-9-,.@$]/))
+    if(city.match(/[0-9-,.\-@$]/))
     {
         alert("please only enter letters");
     }
