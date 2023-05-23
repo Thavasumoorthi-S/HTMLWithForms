@@ -1,38 +1,103 @@
 let id = null;
+var names;
+var num;
+var dob;
+var city;
 function namecheck()
 {
-    console.log("pressing ")
+    
     let names=document.getElementById("fullName").value
     if(names.match(/[0-9-,-@-$]/))
     {
-        alert("please Enter only letter");
+        document.getElementById("fullName").style.borderColor="red";
+        names=0;
+    }
+    else{
+        document.getElementById("fullName").style.borderColor="green";
+        names=1;
+
     }
 }
 function numbercheck()
 {
-    console.log("pressing ")
+    
     let numbers=document.getElementById("empCode").value
-    if(!(numbers.length<=10))
+    if((numbers.length<10))
     {
-        alert("please Enter 10 digits only");
+        document.getElementById("empCode").style.borderColor="red";
+        num=0;
+
     }
-    if(numbers.match(/[a-zA-Z-,-.@$]/))
+    else if((numbers.length>10))
     {
-        alert("please Enter only number digits");
+        document.getElementById("empCode").style.borderColor="red";
+        num=0;
+
+    }
+    else if((numbers.length==10))
+    {
+        document.getElementById("empCode").style.borderColor="green";
+        num=1;
+
+        
+    }
+    else if(numbers.match(/[a-zA-Z-,-.@$]/))
+    {
+        document.getElementById("empCode").style.borderColor="red";
+        num=0;
+
+
     }
 }
 function dobcheck()
 {
     let dob=document.getElementById("dob").value;
-     if(dob.match(/[a-zA-Z-,-.@$]/))
+    let result=dob.split('/');
+
+    let d=new Date();
+    if(dob.match(/[a-zA-Z-,-.@$]/))
     {
-        alert("Please only Enter the numbers like 0-9 and use / for separate dd/mm/yyyy");
+        document.getElementById("dob").style.borderColor="red";
+        dob=0;
+
     }
-    let result=dob.split('/')
-    if((Number(result[0])>31 )||( Number(result[1])>12) || (result[2].length>4))
+    else if((Number(result[0])>31 )||( Number(result[1])>12) || (result[2].length>4))
     {
-        alert("Please enter the date and month and year like dd/mm/yyyy");
+        document.getElementById("dob").style.borderColor="red";
+        dob=0;
+
+
     }
+    else if(result[2]>d.getFullYear())
+    {
+        document.getElementById("dob").style.borderColor="red";
+        dob=0;
+
+    }
+    
+    else if(result[2]==d.getFullYear() && result[1]>d.getMonth()+1)
+    {
+        document.getElementById("dob").style.borderColor="red";
+        dob=0;
+
+
+    }
+
+    else if(result[2]==d.getFullYear() && result[1]==d.getMonth()+1 && result[0]>d.getDate())
+    {
+        document.getElementById("dob").style.borderColor="red";
+        dob=0;
+
+
+    }
+
+    else{
+        document.getElementById("dob").style.borderColor="green";
+        dob=1;
+
+
+    }
+    
 }
 
 function citycheck()
@@ -40,7 +105,15 @@ function citycheck()
     let city=document.getElementById("city").value
     if(city.match(/[0-9-,.@$]/))
     {
-        alert("please only enter letters");
+        document.getElementById("city").style.borderColor="red";
+        city=0;
+
+    }
+    else
+    {
+        document.getElementById("city").style.borderColor="green";
+        city=1;
+
     }
 }
 
@@ -48,10 +121,21 @@ function citycheck()
 function onFormSubmit() {
      if(document.getElementById("fullName").value==""||document.getElementById("empCode").value==""||document.getElementById("dob").value==""||document.getElementById("city").value=="")
     {
-        alert("Please fill the all the input fields")
+        alert("Please fill the all the input fields");
+    }
+    else if(names==0|| num==0 || dob==0 || city==0)
+    {
+        alert("Please fill the correct value in the fields");
+
     }
     else
     {
+        document.getElementById("fullName").style.borderColor="black";
+        document.getElementById("empCode").style.borderColor="black";
+        document.getElementById("dob").style.borderColor="black";
+        document.getElementById("city").style.borderColor="black";
+
+
         var data = read();
         if (id == null)
             insert(data);
@@ -80,8 +164,9 @@ function insert(data) {
      let cell4 = newRow.insertCell(3);
     cell4.innerHTML = data.city;
     let cell5 = newRow.insertCell(4);
-    cell5.innerHTML = `<button style="background-color:maroon;color:white" onClick="onEdit(this)">Edit</button>
+    cell5.innerHTML = `<button style="background-color:yellow;color:black" onClick="onEdit(this)">Edit</button>
                        <button style="background-color:red;color:white" onClick="onDelete(this)">Delete</button>`;
+            
 }
 function resetForm() {
     document.getElementById("fullName").value = "";
