@@ -1,8 +1,8 @@
 let id = null;
-let names;
-let num;
-let dob;
-let city;
+let names=null;
+let num=null;
+let dob=null;
+let city=null;
 function namecheck()
 {
     
