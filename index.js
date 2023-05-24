@@ -10,11 +10,11 @@ function namecheck()
     if(names.match(/[0-9-,-@-$]/))
     {
         document.getElementById("fullName").style.borderColor="red"
-        nameing=0;
+        naming=0;
     }
     else{
         document.getElementById("fullName").style.borderColor="green";
-        nameing=1;
+        naming=1;
 
     }
 }
