@@ -1,8 +1,8 @@
 let id = null;
-var names;
-var num;
-var dob;
-var city;
+let names;
+let num;
+let dob;
+let city;
 function namecheck()
 {
     
@@ -154,7 +154,7 @@ function read() {
 }
 function insert(data) {
     let table = document.getElementById("employee").getElementsByTagName('tbody')[0];
-    var newRow = table.insertRow(table.length);
+    let newRow = table.insertRow(table.length);
     let cell1 = newRow.insertCell(0);
     cell1.innerHTML = data.fullName;
     let cell2 = newRow.insertCell(1);
