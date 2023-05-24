@@ -41,7 +41,7 @@ function numbercheck()
 
         
     }
-    else if(numbers.match(/[a-zA-Z-\,-.@$]/))
+    else if(numbers.match(/[a-zA-Z-,-.@$]/))
     {
         document.getElementById("empCode").style.borderColor="red";
         num=0;
