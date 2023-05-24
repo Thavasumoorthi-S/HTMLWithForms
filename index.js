@@ -1,21 +1,19 @@
 let id = null;
 let naming=null;
 let num=null;
-let dob=null;
-let city=null;
+let date=null;
+let place=null;
 function namecheck()
 {
     
     let names=document.getElementById("fullName").value
-    let border1=document.getElementById("fullName").style.borderColor;
-
     if(names.match(/[0-9-,-@-$]/))
     {
-        border1="red"
+        document.getElementById("fullName").style.borderColor="red"
         nameing=0;
     }
     else{
-        border1="green";
+        document.getElementById("fullName").style.borderColor="green";
         nameing=1;
 
     }
@@ -23,30 +21,29 @@ function namecheck()
 function numbercheck()
 {
     
-    let numbers=document.getElementById("empCode").value
-    let border2=document.getElementById("empCode").style.borderColor;
+    let numbers=document.getElementById("empCode").value;
     if((numbers.length<10))
     {
-        border2="red";
+        document.getElementById("empCode").style.borderColor="red";
         num=0;
 
     }
     else if((numbers.length>10))
     {
-        border2="red";
+        document.getElementById("empCode").style.borderColor="red";
         num=0;
 
     }
     else if((numbers.length==10))
     {
-        border2="green";
+        document.getElementById("empCode").style.borderColor="green";
         num=1;
 
         
     }
     else if(numbers.match(/[a-zA-Z-,-.@$]/))
     {
-        border2="red";
+        document.getElementById("empCode").style.borderColor="red";
         num=0;
 
 
@@ -56,47 +53,46 @@ function dobcheck()
 {
     let dob=document.getElementById("dob").value;
     let result=dob.split('/');
-    let border3=document.getElementById("dob").style.borderColor;
     let d=new Date();
     if(dob.match(/[a-zA-Z-,-.@$]/))
     {
-        border3="red";
-        dob=0;
+        document.getElementById("dob").style.borderColor="red";
+        date=0;
 
     }
     else if((Number(result[0])>31 )||( Number(result[1])>12) || (result[2].length>4))
     {
-        border3="red";
-        dob=0;
+        document.getElementById("dob").style.borderColor="red";
+        date=0;
 
 
     }
     else if(result[2]>d.getFullYear())
     {
-        border3="red";
-        dob=0;
+        document.getElementById("dob").style.borderColor="red";
+        date=0;
 
     }
     
     else if(result[2]==d.getFullYear() && result[1]>d.getMonth()+1)
     {
-        border3="red";
-        dob=0;
+        document.getElementById("dob").style.borderColor="red";
+        date=0;
 
 
     }
 
     else if(result[2]==d.getFullYear() && result[1]==d.getMonth()+1 && result[0]>d.getDate())
     {
-        border3="red";
-        dob=0;
+        document.getElementById("dob").style.borderColor="red";
+        date=0;
 
 
     }
 
     else{
-        border3="green";
-        dob=1;
+        document.getElementById("dob").style.borderColor="green";
+        date=1;
 
 
     }
@@ -106,17 +102,16 @@ function dobcheck()
 function citycheck()
 {
     let city=document.getElementById("city").value
-    let border4=document.getElementById("city").style.borderColor;
     if(city.match(/[0-9-,.@$]/))
     {
-          border4="red";
-        city=0;
+        document.getElementById("city").style.borderColor="red";
+        place=0;
 
     }
     else
     {
-        border4="green";
-        city=1;
+        document.getElementById("city").style.borderColor="green";
+        place=1;
 
     }
 }
@@ -127,7 +122,7 @@ function onFormSubmit() {
     {
         alert("Please fill the all the input fields");
     }
-    else if(naming==0|| num==0 || dob==0 || city==0)
+    else if(naming==0|| num==0 || date==0 || place==0)
     {
         alert("Please fill the correct value in the fields");
 
