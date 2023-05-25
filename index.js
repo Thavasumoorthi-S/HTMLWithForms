@@ -34,13 +34,6 @@ function numbercheck()
         num=0;
 
     }
-    else if((numbers.length==10))
-    {
-        document.getElementById("empnum").style.borderColor="green";
-        num=1;
-
-        
-    }
     else if(numbers.match(/[a-zA-Z-,-.@$]/))
     {
         document.getElementById("empnum").style.borderColor="red";
@@ -48,6 +41,12 @@ function numbercheck()
 
 
     }
+    else if((numbers.length==10))
+    {
+        document.getElementById("empnum").style.borderColor="green";
+        num=1;
+    }
+    
 }
 function dobcheck()
 {
