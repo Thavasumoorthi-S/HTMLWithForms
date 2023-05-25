@@ -21,29 +21,29 @@ function namecheck()
 function numbercheck()
 {
     
-    let numbers=document.getElementById("empCode").value;
+    let numbers=document.getElementById("empnum").value;
     if((numbers.length<10))
     {
-        document.getElementById("empCode").style.borderColor="red";
+        document.getElementById("empnum").style.borderColor="red";
         num=0;
 
     }
     else if((numbers.length>10))
     {
-        document.getElementById("empCode").style.borderColor="red";
+        document.getElementById("empnum").style.borderColor="red";
         num=0;
 
     }
     else if((numbers.length==10))
     {
-        document.getElementById("empCode").style.borderColor="green";
+        document.getElementById("empnum").style.borderColor="green";
         num=1;
 
         
     }
     else if(numbers.match(/[a-zA-Z-,-.@$]/))
     {
-        document.getElementById("empCode").style.borderColor="red";
+        document.getElementById("empnum").style.borderColor="red";
         num=0;
 
 
@@ -118,7 +118,7 @@ function citycheck()
 
 
 function onFormSubmit() {
-     if(document.getElementById("fullName").value==""||document.getElementById("empCode").value==""||document.getElementById("dob").value==""||document.getElementById("city").value=="")
+     if(document.getElementById("fullName").value==""||document.getElementById("empnum").value==""||document.getElementById("dob").value==""||document.getElementById("city").value=="")
     {
         alert("Please fill the all the input fields");
     }
@@ -130,7 +130,7 @@ function onFormSubmit() {
     else
     {
         document.getElementById("fullName").style.borderColor="black";
-        document.getElementById("empCode").style.borderColor="black";
+        document.getElementById("empnum").style.borderColor="black";
         document.getElementById("dob").style.borderColor="black";
         document.getElementById("city").style.borderColor="black";
 
@@ -146,7 +146,7 @@ function onFormSubmit() {
 function read() {
     const data = {};
     data["fullName"] = document.getElementById("fullName").value;
-    data["empCode"] = document.getElementById("empCode").value;
+    data["empnum"] = document.getElementById("empnum").value;
     data["dob"] = document.getElementById("dob").value;
     data["city"] = document.getElementById("city").value;
     return data;
@@ -157,7 +157,7 @@ function insert(data) {
     let cell1 = newRow.insertCell(0);
     cell1.innerHTML = data.fullName;
     let cell2 = newRow.insertCell(1);
-    cell2.innerHTML = data.empCode;
+    cell2.innerHTML = data.empnum;
      let cell3 = newRow.insertCell(2);
     cell3.innerHTML = data.dob;
      let cell4 = newRow.insertCell(3);
@@ -169,7 +169,7 @@ function insert(data) {
 }
 function resetForm() {
     document.getElementById("fullName").value = "";
-    document.getElementById("empCode").value = "";
+    document.getElementById("empnum").value = "";
     document.getElementById("dob").value = "";
     document.getElementById("city").value = "";
    id = null;
@@ -178,13 +178,13 @@ function resetForm() {
 function onEdit(td) {
     id= td.parentElement.parentElement;
     document.getElementById("fullName").value =id.cells[0].innerHTML;
-    document.getElementById("empCode").value =id.cells[1].innerHTML;
+    document.getElementById("empnum").value =id.cells[1].innerHTML;
     document.getElementById("dob").value =id.cells[2].innerHTML;
     document.getElementById("city").value =id.cells[3].innerHTML;
 }
 function update(data) {
    id.cells[0].innerHTML = data.fullName;
-   id.cells[1].innerHTML = data.empCode;
+   id.cells[1].innerHTML = data.empnum;
    id.cells[2].innerHTML = data.dob;
    id.cells[3].innerHTML = data.city;
 }
