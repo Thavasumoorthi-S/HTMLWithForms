@@ -1,44 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
     <meta charset="UTF-8">
-     <meta name="viewport" content="width=device-width , initial-scale=1.0">
+    <meta name="viewport" content="width=device-width , initial-scale=1.0">
     <title>
         CRUD OPERATION
     </title>
-  <link rel="stylesheet" href="style.css">
-    <script src="index.js">
-</script>    
+   
 </head>
 
 <body>
     <div class="container">
     <table class="outer">
-        <caption>FORM</caption>
         <tr>
-            <th>
+            <td>
                 <form onsubmit="event.preventDefault();onFormSubmit()">
                         <label>NAME:</label>
-                        <input type="text" id="fullName" onkeyup="namecheck()">
+                        <input type="text" id="fullName" onkeyup="namecheck()" placeholder="Enter name">
                         <label>Number:<label>
-                        <input type="text" id="empCode" onkeyup="numbercheck()" >
+                        <input type="text" id="empCode" onkeyup="numbercheck()" placeholder="Enter Number" >
                         <label>DOB:</label>
-                        <input type="text" id="dob" onkeyup="dobcheck()">
+                        <input type='text' id="dob" onkeyup="dobcheck()" placeholder="DD/MM/YYYY">
                         <label>CITY:</label>
-                        <input type="text" id="city" onkeyup="citycheck()" >
+                        <input type="text" id="city" onkeyup="citycheck()" placeholder="Enter City" >
                         <button type="submit">SUBMIT</button>
                 </form>
-            </th>
+            </td>
         </tr>
     </table>
     <table  id="employee">
-        <caption>CRUD OPERRATION RESULT</caption>
         <thead>
             <tr>
                 <th>NAME</th>
-                <th>EMPID</th>
-                <th>SALARY</th>
+                <th>NUMBER</th>
+                <th>DOB</th>
                 <th>CITY</th>
                 <th>ACTION</th>
             </tr>
@@ -47,7 +42,8 @@
 
             </tbody>
     </table>
-      </div>
+</div>
+    <script src="Assignment2.js"></script>
 </body>
 
 </html>
